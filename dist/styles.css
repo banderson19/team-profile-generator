@@ -1,0 +1,33 @@
+Header {
+    background-color: red;
+    height: 50px;
+    text-align: center;
+}
+
+.teamContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;   
+
+}
+.teamCards {
+    width: 200px;
+    height: 250px;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: grey;
+}
+.cardHeading {
+    background-color: #03b1fc;
+    align-self: flex-start;
+    align-content: center;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+.cardContent {
+    margin-top: 10px;
+    background-color: lightgray;
+    width: 75%;
+}
