@@ -31,9 +31,9 @@ const buildEngineers = (engineerData) => {
     =========================
     `)
     
-    // if (!engineerData.engineers) {
-    //     engineerData.engineers = [];
-    // }
+    if (!engineerData.engineers) {
+        engineerData.engineers = [];
+    }
     
     return inquirer.prompt([
         {
@@ -119,24 +119,26 @@ const buildTeam = (teamData) => {
         }
     ])
     .then(answer => {
+        console.log(answer)
         console.info("answer", answer.teamMember)
         if(answer.teamMember == 'Engineer') {
-            buildEngineers()
+            
+            buildEngineers(answer)
         } else if(answer.teamMember == 'Intern') {
             buildInterns()
         } else {
             console.log('done')
         }
     })
-    // .then(data => {
-    //     teamData.members.push(data);
-    //     console.log(teamData.members.push(data))
-    //     if (data) {
-    //         return buildTeam(teamData);
-    //     } else {
-    //         return teamData;
-    //     }
-    // });
+    .then(data => {
+        teamData.members.push(data);
+        console.log(teamData.members.push(data))
+        if (data) {
+            return buildTeam(teamData);
+        } else {
+            return teamData;
+        }
+    });
 
 }
 
