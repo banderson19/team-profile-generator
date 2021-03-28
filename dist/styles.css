@@ -4,7 +4,7 @@ Header {
     text-align: center;
 }
 
-.teamContainer {
+.mainContainer {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;   
@@ -17,6 +17,7 @@ Header {
     margin-left: 10px;
     margin-right: 10px;
     background-color: grey;
+    justify-content: center;
 }
 .cardHeading {
     background-color: #03b1fc;
@@ -28,6 +29,15 @@ Header {
 }
 .cardContent {
     margin-top: 10px;
-    background-color: lightgray;
-    width: 75%;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: lightgray;    
+}
+
+.cardContent ul {
+    list-style-type: none;
+}
+
+.cardContent li {
+    margin-top: 10px;
 }

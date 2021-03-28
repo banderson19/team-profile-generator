@@ -2,6 +2,9 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const render = require('./dist/render');
+const fs = require('fs');
+
 
 let team = [];
 
@@ -21,7 +24,7 @@ const buildTeam =() => {
         } else if (answers.employeeType == 'Intern') {
             buildIntern()
         } else {
-            console.log(team)
+            generateHTMLFile()
         }
     })
 }
@@ -55,7 +58,7 @@ const buildManager = () => {
         if(answers.continue) {
             return buildTeam();
         } else {
-            console.log(team)
+            generateHTMLFile();
         }
     })
 };
@@ -89,7 +92,7 @@ const buildEngineer = () => {
         if(answers.continue) {
             return buildTeam();
         } else {
-            console.log(team)
+            generateHTMLFile();
         }
     })
 }
@@ -123,22 +126,23 @@ const buildIntern = () => {
         if(answers.continue) {
             return buildTeam();
         } else {
-            console.log(team)
+            generateHTMLFile();
         }
     })
 }
 
 buildTeam();
-function generateHTML (team) {
-    var html = '';
-    for(var member of team) {
-        html += `
-<h3>${member.name}</h3>
-`
-        if (member.getRole() === 'Engineer'){
-            html += `<h3>github:${member.github}</h3>`
-        } else if (member.getRole() === 'Intern') {
-            html += `<h3>school: ${member.school}</h3>`
-        }
-    }
+
+generateHTMLFile = () => {
+    const teamHTML = render(team)
+    fs.writeFile('index.html', teamHTML, function (err) {
+        if (err) throw err;
+        console.log('saved')
+    })
+
+    console.log(teamHTML)
 }
+
+
+
+
